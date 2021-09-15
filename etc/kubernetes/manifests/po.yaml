@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: phpinfo-po
+  labels:
+    app=test
+specs:
+  containers:
+    - args:
+      command:
+      env:
+      name: phpinfo-container
+      image: alpine/git:1.0.30
+      ports:
+        - container Port: 8080
+          protocol: TCP
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100M
+        requests:
+          cpu: 100m
+          memory: 100M
+      volumeMounts:  
+        - mountPath: /public/
+          name: public
+          readOnly: True
+      workingDir: /app/
+  initContainers:
+    - args:
+        - git clone https://github.com/CesarOrteg/phpinfo;
+        - cd phpinfo;
+        - checkout 2021-09-cesar;
+        - cp -r src/index.php /public/ ;
+      command:
+        - /bin/sh
+        - -c
+      env:
+        - name: author
+          value: cesar
+      name: phpinfo-git
+      image: alpine/git:1.0.30
+      ports:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100M
+        requests:
+          cpu: 100m
+          memory: 100M
+      volumeMounts:
+        - mountPath: /private/
+          name: private
+          readOnly: False    
+        - mountPath: /public/
+          name: public
+          readOnly: False
+      workingDir: /private/
+  volumes:
+  
+    
