@@ -15,20 +15,23 @@ docker image build \
 #which php
 
 docker network create phpinfo-net
+
 docker container run \
   --cpus '0.1' \
   --detach \
-  --env AUTHOR=me \
+  --entrypoint /usr/bin/php \
+  --env author=Ganimedes \
   --label app=phpinfo \
   --memory 100M \
-  --name phpinfo-cont \
+  --name phpinfo \
   --network phpinfo-net \
   --publish 80:8080 \
-  --read-only \     
+  --read-only \
   --restart always \
   --user nobody \
-  --volume ${PWD}/src/:/app/:ro \    
-  --workdir /app \
+  --volume ${PWD}/src/index.php:/app/index.php:ro \
+  --workdir /app/ \
   local/phpinfo:test \
   -f /src/index.php \
   -S 0.0.0.0:8080
+  
