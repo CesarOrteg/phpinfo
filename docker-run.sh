@@ -5,9 +5,10 @@ cd phpinfo
 git checkout 2021-09-cesar
 
 docker image build \
-  --file ./src/Dockerfile \
+  --file ./Dockerfile \
   --no-cache \
   --tag local/phpinfo:test
+  ./
 
 docker network create phpinfo-net
 docker container run \
