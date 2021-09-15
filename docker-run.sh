@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git clone https://https://github.com/CesarOrteg/phpinfo
+git clone https://github.com/CesarOrteg/phpinfo
 cd phpinfo
 git checkout 2021-09-cesar
 
