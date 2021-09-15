@@ -16,9 +16,14 @@ docker image build \
 
 docker network create phpinfo-net
 docker container run \
+  --cpus '0.1' \
   --detach \
+  --env AUTHOR=me \
+  --label app=phpinfo \
+  --memory 100M \
   --name phpinfo-cont \
   --network phpinfo-net \
+  --publish 80:8080 \
   --read-only \     #Container is RO
   --restart always \
   --user nobody \     #User launching the container
