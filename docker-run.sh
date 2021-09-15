@@ -24,10 +24,13 @@ docker container run \
   --name phpinfo-cont \
   --network phpinfo-net \
   --publish 80:8080 \
-  --read-only \     #Container is RO
+  #Container is RO
+  --read-only \     
   --restart always \
-  --user nobody \     #User launching the container
-  --volume src/:/app/:ro \    #Volume is RO
+  #User launching the container
+  --user nobody \
+  #Volume is RO
+  --volume ${PWD}/src/:/app/:ro \    
   --workdir /app \
   local/phpinfo:test
   -f /src/index.php \
