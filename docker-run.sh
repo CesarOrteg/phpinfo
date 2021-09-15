@@ -11,7 +11,8 @@ docker image build \
   ./
 
 #Testing the image
-docker container run --entrypoint /bin/sh --interactive --rm --tty local/phpinfo:test
+#docker container run --entrypoint /bin/sh --interactive --rm --tty local/phpinfo:test
+#which php
 
 docker network create phpinfo-net
 docker container run \
