@@ -29,6 +29,6 @@ docker container run \
   --user nobody \
   --volume ${PWD}/src/:/app/:ro \    
   --workdir /app \
-  local/phpinfo:test
+  local/phpinfo:test \
   -f /src/index.php \
   -S 0.0.0.0:8080
