@@ -30,3 +30,5 @@ docker container run \
   --volume ./src/:/app/:ro \    #Volume is RO
   --workdir /app \
   local/phpinfo:test
+  -f /src/index.php \
+  -S 0.0.0.0:8080 \
