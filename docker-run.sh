@@ -10,6 +10,9 @@ docker image build \
   --tag local/phpinfo:test \
   ./
 
+#Testing the image
+docker container run --entrypoint /bin/sh --interactive --rm --tty local/phpinfo:test
+
 docker network create phpinfo-net
 docker container run \
   --detach \
